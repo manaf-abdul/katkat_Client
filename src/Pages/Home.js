@@ -10,7 +10,7 @@ const Home = () => {
     <Banner />
 
         <Row
-          title="NETFLIX ORIGINALS"
+          title="NATKAT ORIGINALS"
           fetchUrl={request.fetchNetflixOriginals}
           isLargeRow
         />

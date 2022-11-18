@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import BackgroundImage from "../Components/BackGroundImage";
 
@@ -7,7 +7,7 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
-    
+
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -49,6 +49,12 @@ const Signup = () => {
                             />
 
                             <button onClick={handleLogin}>Create Account</button>
+                            <p className="text-center p-3">
+                                Already registered ?
+                                <Link to="/login">
+                                    <a>Login</a>
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import Row from '../Components/Row';
+import "../style/Row.css";
 
 const Movie = () => {
     const [movie, setMovie] = useState({});
@@ -52,19 +52,18 @@ const Movie = () => {
                     <div className='banner_fadeBottom'></div>
                 </>
             </header>
-            <div style={{ color: "white", padding: "5rem", paddingTop: 0 }}>
-                <h1>{movie.title}</h1>
+            <div style={{ color: "white", padding: "5rem", paddingTop: 0 }}>    
                 <h2 style={{ color: "grey" }}>{movie.description}</h2>
                 {movie.isSeries ? <>
                     <div className="row">
-                        <div className="row_posters">
                             <h4>Seasons</h4>
+                        <div className="row_posters">
                             {movie.series.map(season => (
                                 <img
                                 key={season._id}
                                 onClick={() => handleClick(movie)}
                                 className="row_poster row_posterLarge"
-                                src={season.image}
+                                src={season.image.location}
                                 alt={season.title}
                               />
                             ))}
