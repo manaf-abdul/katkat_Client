@@ -1,7 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import BackgroundImage from "../Components/BackGroundImage";
+import { BASEURL } from '../Constants';
 
 const Signup = () => {
     const [email, setEmail] = useState("");
@@ -11,11 +14,13 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        // try {
-        //   await signInWithEmailAndPassword(firebaseAuth, email, password);
-        // } catch (error) {
-        //   console.log(error.code);
-        // }
+        try {
+            const { data } = await axios.post(`${BASEURL}user/signup`, { email, password,name })
+            toast(data.msg)
+            navigate('/')
+        } catch (error) {
+            toast.error(error.message)
+        }
     };
 
     return (

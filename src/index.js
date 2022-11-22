@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.css'; // import first
 import { ToastContainer } from 'react-toastify';
+import Context from "./Context";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastContainer 
+    <ToastContainer
       position="bottom-center"
       autoClose={5000}
       hideProgressBar={false}
@@ -20,7 +21,9 @@ root.render(
       draggable
       pauseOnHover
       theme="dark" />
-    <App />
+    <Context>
+      <App />
+    </Context>
   </React.StrictMode>
 );
 
