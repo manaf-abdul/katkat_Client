@@ -56,7 +56,7 @@ const Nav = () => {
         icon={<CoffeeOutlined style={{ fontSize: '1.5rem' }}/>}
         title={user ? user.username : "Profile"}
         className="float-right"
-        style={{ position: "absolute", right: "2rem"}}
+        style={{ position: "absolute", right: "0rem"}}
       >
         <ItemGroup className='float-right'>
           <Item
