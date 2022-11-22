@@ -53,10 +53,10 @@ const Nav = () => {
       <Search style={{ color: "white", padding: 0, margin: 0, width: 200,marginTop:9 }} placeholder="input search text" onSearch={onSearch} enterButton />
 
       <SubMenu
-        icon={<CoffeeOutlined />}
+        icon={<CoffeeOutlined style={{ fontSize: '1.5rem' }}/>}
         title={user ? user.username : "Profile"}
         className="float-right"
-        style={{ position: "absolute", right: "2rem" }}
+        style={{ position: "absolute", right: "2rem"}}
       >
         <ItemGroup className='float-right'>
           <Item
