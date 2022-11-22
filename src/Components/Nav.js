@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style/Nav.css";
-import Logo from '../assets/logo.png'
+// import Logo from '../assets/logo.png'
 import UserLogo from '../assets/user.webp'
 
 const Nav = () => {
@@ -20,7 +20,6 @@ const Nav = () => {
     <div className={`nav ${show && "nav_black"}`}>
       <img
         className="nav_logo"
-        src={Logo}
         alt="Netflix Logo"
       />
       <img
