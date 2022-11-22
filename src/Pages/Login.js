@@ -13,15 +13,20 @@ const Login = () => {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
+      setLoading(true)
       const { data } = await axios.post(`${BASEURL}user/signin`, { email, password })
       setUser(data.data)
+      localStorage.setItem('userInfo', JSON.stringify(data.data))
       toast(data.msg)
+      setLoading(false)
       navigate('/')
     } catch (error) {
+      setLoading(false)
       toast.error(error.message)
     }
   };
@@ -49,7 +54,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button onClick={handleLogin}>Login to your account</button>
+              <button onClick={handleLogin}>{loading ? "Loading...":"Login to your account"}</button>
               <p className="text-center p-3">
                 Don't habe an account ?
                 <Link to="/signup">
