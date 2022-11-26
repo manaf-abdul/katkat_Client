@@ -29,12 +29,10 @@ const Plans = () => {
         console.log(price);
         console.log(typeof price);
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
-        // console.log("res", res)
         if (!res) {
             alert('Razorpay SDK failed to load. Are you online?')
             return
         }
-        // const payPrice = {couponApplyed ? couponAfterPrice : totalPrice}
         const data = {
             price: price,
             currency: "INR"
@@ -69,11 +67,6 @@ const Plans = () => {
                 toast("Payment Successfull")
                 navigate('/')
             },
-            // prefill: {
-            //     name: 'DiGrowFa',
-            //     email: 'DiGrowFa@gmail.com',
-            //     phone_number: '9876543210',
-            // },
         }
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
@@ -86,7 +79,7 @@ const Plans = () => {
                     onClick={() => showRazorPay(100)}
                     className={`row_poster1 row_posterLarge1`}
                 >
-                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px"}}>
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px",borderRadius:"20px"}}>
                         <h1>Price : <b>₹ 100</b></h1>
                         <h2>1 month</h2>
                         <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
@@ -96,7 +89,7 @@ const Plans = () => {
                     onClick={() => showRazorPay(200)}
                     className={`row_poster1 row_posterLarge1`}
                 >
-                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px" }}>
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px",borderRadius:"20px" }}>
                         <h1>Price : <b>₹ 200</b></h1>
                         <h2>3 month</h2>
                         <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
@@ -106,7 +99,7 @@ const Plans = () => {
                     onClick={() => showRazorPay(300)}
                     className={`row_poster1 row_posterLarge1`}
                 >
-                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px" }}>
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px",borderRadius:"20px" }}>
                         <h1>Price : <b>₹ 300</b></h1>
                         <h2>6 month</h2>
                         <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
@@ -116,7 +109,7 @@ const Plans = () => {
                     onClick={() => showRazorPay(400)}
                     className={`row_poster1 row_posterLarge1`}
                 >
-                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px", alignItems: "center", justifyContent: "center" }} className="p-5">
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px", borderRadius:"20px" }} className="p-5">
                         <h1>Price : <b>₹ 400</b></h1>
                         <h2>12 month</h2>
                         <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
