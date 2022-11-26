@@ -42,7 +42,7 @@ const Movie = () => {
                         <div className="back" onClick={() => setShow(false)}>
                             X
                         </div>
-                        <video className="video" style={{ width: "100%", height: "100%", zIndex: 10000 }} autoPlay progress controls src="https://bizsapp.s3.amazonaws.com/netflix/blog/8ltuj4e77rdh84p2g81pln.mp4" />
+                        <video className="video" style={{ width: "100%", height: "100%", zIndex: 10000 }} autoPlay progress controls src={movie?.video?.location} />
 
                     </div>
 
