@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Movie from "./Pages/Movie";
 import { UserState } from './Context';
+import Plans from "./Pages/Plans";
 
 function App() {
   const { user,setUser } = UserState()
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/plans" element={<Plans />} />
           <Route exact path="/" element={user ? <Home /> : <Login />} />
           <Route exact path="/movie/:id" element={<Movie />} />
          

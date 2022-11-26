@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import "../style/Row.css";
 import ReactPlayer from 'react-player';
 import { BASEURL } from '../Constants';
+import { UserState } from '../Context';
+import { Button, Modal } from 'antd';
 
 const Movie = () => {
+    const navigate=useNavigate()
+    const { user, setUser } = UserState()
     const params = useParams()
     const [movie, setMovie] = useState({});
 
@@ -19,6 +23,9 @@ const Movie = () => {
     function truncate(str, n) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
+    const [payModalShow, setpayModalShow] = useState(false);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
     useEffect(() => {
@@ -33,8 +40,31 @@ const Movie = () => {
         getData()
     }, [])
 
+    const handlePlay = async () => {
+        if (user.isSubscribed) {
+            console.log("INSIDE IF");
+            setShow(true)
+        }
+        else {
+            console.log("INSIDE IF");
+            setIsModalOpen(true)
+        }
+    }
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+        navigate('/plans')
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <>
+            <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} okText="Subcribe">
+                <h1>Please subscribe to continue watching...</h1>
+            </Modal>
             {/* <ReactPlayer url='https://bizsapp.s3.amazonaws.com/netflix/blog/8ltuj4e77rdh84p2g81pln.mp4'/> */}
             {
                 show ?
@@ -43,9 +73,7 @@ const Movie = () => {
                             X
                         </div>
                         <video className="video" style={{ width: "100%", height: "100%", zIndex: 10000 }} autoPlay progress controls src={movie?.video?.location} />
-
                     </div>
-
                     :
                     <>
                         <header
@@ -57,24 +85,20 @@ const Movie = () => {
                             }}
                         >
                             <>
-
-
                                 <div className="banner_contetents">
                                     {/* title */}
                                     <h1 className="banner_title">
                                         {movie?.title || movie?.name || movie?.original_name}
                                     </h1>
                                     {/* button */}
-                                    <button className="banner_button" onClick={() => setShow(true)}>PLAY</button>
+                                    <button className="banner_button" onClick={handlePlay}>PLAY</button>
                                     <button className="banner_button">MY LIST</button>
                                     {/* description */}
                                     <h1 className="banner_desscription">{truncate(movie?.overview, 150)}</h1>
                                 </div>
                                 <div className='banner_fadeBottom'></div>
-
                             </>
                         </header>
-
                         <div style={{ color: "white", padding: "5rem", paddingTop: 0 }}>
                             <h2 style={{ color: "grey" }}>{movie.description}</h2>
                             {movie.isSeries ? <>
@@ -91,7 +115,6 @@ const Movie = () => {
                                         />
                                     ))}
                                 </div>
-                                {/* </div> */}
                             </>
                                 :
                                 ""

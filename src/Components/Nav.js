@@ -62,12 +62,12 @@ const Nav = () => {
         style={{ position: "absolute", right: "0rem"}}
       >
         <ItemGroup className='float-right'>
-          <Item
+          {/* <Item
             key="/user"
             icon={<UserAddOutlined />}
           >
             Profile
-          </Item>
+          </Item> */}
           <Item
             onClick={logout}
             icon={<LogoutOutlined />}
