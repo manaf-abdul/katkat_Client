@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Plans = () => {
-    
+
     const { user, setUser } = UserState()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     function loadScript(src) {
         return new Promise((resolve) => {
@@ -63,8 +63,8 @@ const Plans = () => {
             name: 'Digrowfa PVT LTD',
             description: 'Make the payment to complete the process',
             handler: async (response) => {
-                const {data}=await axios.post(`${BASEURL}payment/razorpay/success`, { options, orderdata, response })
-                console.log("mine",data);
+                const { data } = await axios.post(`${BASEURL}payment/razorpay/success`, { options, orderdata, response })
+                console.log("mine", data);
                 setUser(data.data)
                 toast("Payment Successfull")
                 navigate('/')
@@ -83,37 +83,44 @@ const Plans = () => {
             <h2 style={{ color: "blue" }} className='text-center'>Plans</h2>
             <div className="row_posters1">
                 <card
-                    onClick={()=>showRazorPay(200)}
+                    onClick={() => showRazorPay(100)}
                     className={`row_poster1 row_posterLarge1`}
-                    >
-                    <img
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                        width="250px"
-                        height="400px"
-                    />
-                    <h1>₹ 200/month</h1>
+                >
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px"}}>
+                        <h1>Price : <b>₹ 100</b></h1>
+                        <h2>1 month</h2>
+                        <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
+                    </div>
                 </card>
                 <card
-                    onClick={()=>showRazorPay(300)}
+                    onClick={() => showRazorPay(200)}
                     className={`row_poster1 row_posterLarge1`}
-                    >
-                    <img
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                        width="250px"
-                        height="400px"
-                    />
-                    <h1>₹ 300/month</h1>
+                >
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px" }}>
+                        <h1>Price : <b>₹ 200</b></h1>
+                        <h2>3 month</h2>
+                        <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
+                    </div>
                 </card>
                 <card
-                    onClick={()=>showRazorPay(400)}
+                    onClick={() => showRazorPay(300)}
                     className={`row_poster1 row_posterLarge1`}
-                    >
-                    <img
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                        width="250px"
-                        height="400px"
-                    />
-                    <h1>₹ 400/month</h1>
+                >
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px" }}>
+                        <h1>Price : <b>₹ 300</b></h1>
+                        <h2>6 month</h2>
+                        <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
+                    </div>
+                </card>
+                <card
+                    onClick={() => showRazorPay(400)}
+                    className={`row_poster1 row_posterLarge1`}
+                >
+                    <div style={{ backgroundColor: "#191970", color: "white", width: "230px", height: "250px", alignItems: "center", justifyContent: "center" }} className="p-5">
+                        <h1>Price : <b>₹ 400</b></h1>
+                        <h2>12 month</h2>
+                        <Button style={{width:"175px",height:"85px",fontSize:"2rem",fontWeight:"bolder"}}>BUY NOW</Button>
+                    </div>
                 </card>
             </div>
         </div>

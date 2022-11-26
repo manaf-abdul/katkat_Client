@@ -30,6 +30,7 @@ const Nav = () => {
     try {
       localStorage.removeItem('userInfo')
       setUser(null)
+      navigate('/')
     } catch (error) {
       toast(error.message)
     }

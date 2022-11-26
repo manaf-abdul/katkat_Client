@@ -9,6 +9,9 @@
   overflow-x: scroll; 
   padding: 10px;
   height: 585px;
+  text-align: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 .row_posters1::-webkit-scrollbar {
   display: none;
