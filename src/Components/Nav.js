@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/Nav.css";
 import { Menu } from 'antd'
 import UserLogo from '../assets/user.webp'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppstoreAddOutlined, CoffeeOutlined, LogoutOutlined, UserAddOutlined } from "@ant-design/icons";
 import { UserState } from "../Context";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ import Search from "antd/es/input/Search";
 const { Item, SubMenu, ItemGroup } = Menu //Menu.Item
 
 const Nav = () => {
+  const navigate=useNavigate()
   const { user, setUser } = UserState()
   const [show, handleShow] = useState();
   const [current, setCurrent] = useState('')
@@ -45,6 +46,8 @@ const Nav = () => {
   return (
     <Menu mode='horizontal' selectedKeys={[current]}  style={{backgroundColor:!show ? "transparent" : "black",color:"white"}} className={`nav ${show && "nav_black"}`}>
       <Item
+      
+      onClick={()=>navigate('/')}
         key="/instructor"
         icon={<AppstoreAddOutlined  style={{ fontSize: '1.5rem' }}/>}
       >

@@ -13,10 +13,10 @@ function App() {
   console.log("1111111111111111111111",user)
   return (
     <>
+    <BrowserRouter>
       <div className="App">
         <Nav />
         </div>
-      <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
